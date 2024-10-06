@@ -3,20 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tableo Polibio</title>
-    <link rel="shortcut icon" href="#">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>Tablero de Polibio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="estilo.css">
-
 </head>
-<body class="bg-secondary">
-    <div class="bg-info fw-bold my-2 p-2 rounded">
-        Matriz de botones
-    </div>
-    <div id="matriz" class="bg-info mb-5 p-1 rounded text-center">
+<body class="bg-secondary text-light">
+    <div class="container">
+        <div class="bg-info fw-bold my-2 p-2 rounded text-center">
+            Matriz de botones
+        </div>
+
+        <!-- Información del usuario -->
+        <div class="bg-dark text-light p-2 rounded">
+            <p>Jose Angel Martinez Lopez  </p>
+            <p>Matrícula: 204272</p>
+            <p>Carrera: Ingenieria en Sistemas Compitacionales</p>
+        </div>
+
+        <!-- Switch para cambiar el modo -->
+        <div class="bg-warning p-2 my-3 rounded text-center">
+            <label class="form-check-label me-2" for="switchMode">Utiliza el botón "Switch" para cambiar el modo de los botones</label>
+            <div class="form-check form-switch d-inline-block">
+                <input class="form-check-input" type="checkbox" id="switchMode" onchange="cambiarModo()">
+                <label class="form-check-label" for="switchMode">Modo: <span id="modoTexto">Números</span></label>
+            </div>
+        </div>
+
+        <!-- Matriz de botones y campos de cifrado/descifrado -->
+        <div class="d-flex">
+            <!-- Texto "SEGUNDOS" en vertical -->
+            <div class="d-flex flex-column justify-content-center me-2">
+                <div class="vertical-text">
+                    SEGUNDOS
+                </div>
+            </div>
         
-    </div>
+            <!-- Matriz -->
+            <div class="d-inline-block">
+                <div class="text-center">PRIMEROS</div>
+                <div id="matriz" class="bg-info p-1 rounded text-center"></div>
+            </div>
+        
+            <!-- Campos de cifrado y descifrado -->
+            <div class="ms-4 d-flex flex-column justify-content-center">
+                <div class="mb-3">
+                    <label for="valorCifrado" class="form-label">Valor Cifrado</label>
+                    <input type="text" class="form-control" id="valorCifrado" placeholder="32 43 13 11">
+                </div>
+                <div>
+                    <label for="valorDescifrado" class="form-label">Valor Descifrado</label>
+                    <input type="text" class="form-control" id="valorDescifrado" placeholder="H O L A">
+                </div>
+            </div>
+        </div>
+        
+    <script src="scripts.js"></script>
 </body>
-<script src="scripts.js"></script>
 </html>

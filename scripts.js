@@ -1,4 +1,4 @@
-function definirMatriz(){
+function definirMatriz() {
     var htmlMatriz = document.getElementById("matriz");
     var htmlBotones = '';
     var objetoAbecedario = {
@@ -9,20 +9,58 @@ function definirMatriz(){
         "40": "4", "41": "Q", "42": "R", "43": "S", "44": "T", "45": "U",
         "50": "5", "51": "V", "52": "W", "53": "X", "54": "Y", "55": "Z"
     };
-    
-    
 
-    for(let i=0; i<6; i++){
-        if (i != 0){
-            htmlBotones = htmlBotones + '<br>';
+    // Creamos la matriz con los botones
+    for(let i = 0; i < 6; i++) {
+        if (i != 0) {
+            htmlBotones += '<br>';
         }
-        for(let j=0; j<6; j++){
-            //Para visualizar
-            //htmlBotones = htmlBotones + '<button type="button" class="btn btn-danger m-1">'+i+j+'</button>';
-            htmlBotones = htmlBotones + '<button id="boton'+ i + j +'" type="button" class="boton-matriz btn btn-danger m-1">'+ objetoAbecedario[""+i+j] +'</button>';
-
+        for(let j = 0; j < 6; j++) {
+            htmlBotones += '<button id="boton' + i + j + '" type="button" class="boton-matriz btn btn-danger m-1" data-letra="' + (isNaN(objetoAbecedario["" + i + j]) ? 'letra' : 'numero') + '">' + objetoAbecedario["" + i + j] + '</button>';
         }
     }
     htmlMatriz.innerHTML = htmlBotones;
+
+    // Agregamos los eventos para habilitar/deshabilitar según el switch
+    agregarEventosSwitch();
 }
+
+function agregarEventosSwitch() {
+    const switchElement = document.getElementById('switchMode');
+    switchElement.addEventListener('change', function() {
+        const botones = document.querySelectorAll('.boton-matriz');
+
+        botones.forEach(boton => {
+            const tipo = boton.getAttribute('data-letra');
+            if (this.checked) {
+                // Si el switch está activado, se habilitan las letras y se deshabilitan los números
+                if (tipo === 'numero') {
+                    boton.disabled = true;
+                    boton.classList.remove('btn-primary');
+                    boton.classList.add('btn-secondary');
+                } else {
+                    boton.disabled = false;
+                    boton.classList.remove('btn-secondary');
+                    boton.classList.add('btn-primary');
+                }
+            } else {
+                // Si el switch está desactivado, se habilitan los números y se deshabilitan las letras
+                if (tipo === 'letra') {
+                    boton.disabled = true;
+                    boton.classList.remove('btn-primary');
+                    boton.classList.add('btn-secondary');
+                } else {
+                    boton.disabled = false;
+                    boton.classList.remove('btn-secondary');
+                    boton.classList.add('btn-primary');
+                }
+            }
+        });
+    });
+
+    // Trigger inicial para que empiece con los números habilitados
+    switchElement.dispatchEvent(new Event('change'));
+}
+
+// Llamamos a la función inicial para definir la matriz
 definirMatriz();
