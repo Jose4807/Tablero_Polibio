@@ -1,0 +1,10 @@
+.boton-matriz{
+    height: 50px;
+    width: 50px;
+}
+
+#boton00, #boton01, #boton02, #boton03, #boton04, #boton05,
+#boton10, #boton20, #boton30, #boton40, #boton50{
+    background-color: aquamarine;
+    border-color: bisque;
+}

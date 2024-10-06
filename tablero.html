@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cifrado de Polibio</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+    h1 {
+        text-align: center;
+    }
+    label, textarea {
+        display: block;
+        margin: 10px 0;
+    }
+    </style>
+</head>
+<body>
+
+<h1>Cifrado de Polibio</h1>
+
+    <form id="cipherForm">
+        <label for="message">Mensaje a cifrar:</label>
+        <textarea id="message" rows="4" cols="50"></textarea>
+
+    <button type="button" onclick="encryptPolibio()">Cifrar</button>
+    </form>
+
+    <h2>Mensaje cifrado:</h2>
+    <p id="encryptedMessage"></p>
+
+    <script>
+    const polibioSquare = [
+        ['A', 'B', 'C', 'D', 'E'],
+        ['F', 'G', 'H', 'I', 'K'],  // La 'J' se suele combinar con la 'I'
+        ['L', 'M', 'N', 'O', 'P'],
+        ['Q', 'R', 'S', 'T', 'U'],
+        ['V', 'W', 'X', 'Y', 'Z']
+    ];
+
+    function encryptPolibio() {
+        const message = document.getElementById('message').value.toUpperCase().replace(/J/g, 'I');
+        let encryptedMessage = '';
+    
+    for (let char of message) {
+        if (char === ' ') {
+            encryptedMessage += ' ';
+            continue;
+        }
+
+        for (let row = 0; row < 5; row++) {
+            for (let col = 0; col < 5; col++) {
+                if (polibioSquare[row][col] === char) {
+                    encryptedMessage += (row + 1).toString() + (col + 1).toString() + ' ';
+            }
+        }
+        }
+}
+
+    document.getElementById('encryptedMessage').innerText = encryptedMessage.trim();
+    }
+</script>
+
+</body>
+</html>
