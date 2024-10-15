@@ -1,29 +1,21 @@
+body{
+    background-image: url(https://content.nationalgeographic.com.es/medio/2022/12/21/el-primer-campo-profundo-del-telescopio-espacial-james-webb_ebc2bf30_221221161954_2000x2041.jpg);
+    background-size: cover;
+    background-position: center;
+}
 .boton-matriz {
     height: 50px;
     width: 50px;
     font-size: 1rem;
 }
-
 #boton00, #boton01, #boton02, #boton03, #boton04, #boton05,
 #boton10, #boton20, #boton30, #boton40, #boton50 {
-    background-color: aquamarine;
-    border-color: bisque;
+    background-color: rgb(51, 168, 129);
+    border-color: rgb(254, 255, 255);
 }
 
 .bg-info {
-    background-color: #17a2b8 !important;
-}
-
-.bg-warning {
-    background-color: #ffc107 !important;
-}
-
-.bg-dark {
-    background-color: #343a40 !important;
-    color: white;
-}
-.d-inline-block {
-    min-width: 240px;
+    background-color: #000000 !important;
 }
 .vertical-text {
     writing-mode: vertical-rl; /* Escribir verticalmente */
